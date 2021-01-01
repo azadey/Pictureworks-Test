@@ -1,0 +1,68 @@
+version : '3'
+services:
+
+  #PHP services configured with Xdebug
+  app:
+    #image: ${MY_REGISTRY}/php7.4-xdebug
+    build: ./.docker/php
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./app/:/var/www
+      - ./.docker/php/local.ini/:/usr/local/etc/php/conf.d/local.ini
+      - $HOME/.dockercache/appuser/composer:/home/www/.composer
+    depends_on:
+      - webserver
+      - database
+    networks:
+      app-network:
+        ipv4_address: 192.168.37.17
+
+  #Ngninx service
+  webserver:
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+      - "443:443"
+    volumes:
+      - ./app:/var/www
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d/
+    networks:
+      app-network:
+        ipv4_address: 192.168.37.14
+
+  #postgresql
+  database:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "POSTGRES_DB=picturedb"
+      - "POSTGRES_USER=user"
+      - "POSTGRES_PASSWORD=password"
+    networks:
+      app-network:
+        ipv4_address: 192.168.37.7
+
+#Docker networks
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.37.0/24
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
