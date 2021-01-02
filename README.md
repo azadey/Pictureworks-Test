@@ -22,9 +22,9 @@ Docker image will be build if this is your first time running docker-compose.
         
     cp .env.exampe .env
 
-    sudo chown -R {your current user}:user storage
+    sudo chown -R {your current user}:http storage
 
-    sudo chown -R {your current user}:user bootstrap/cache
+    sudo chown -R {your current user}:http bootstrap/cache
 
     chmod -R 775 storage
 
@@ -51,6 +51,33 @@ Now lets set up the project. Run the following commands
     php artisan migrate
 
     php artisan db:seed
+
+Rest API routes for user comments CRUD
+
+CREATE
+
+    POST http://{APP NAME}/api/user-comment
+
+    {
+	    "name" : "Samuel",
+	    "comments" : "My First post for comments"
+    }
+
+GET
     
+    GET http://{APP NAME}/api/user-comment/1
+    
+UPDATE
+
+    PATCH http://{APP NAME}/api/user-comments/1
+
+    {
+	    "name" : "Samuel Brent",
+	    "comments" : "My post / comments update"
+    }
+
+DELETE
+    
+    DELETE http://{APP NAME}/api/user-comments/1
     
 

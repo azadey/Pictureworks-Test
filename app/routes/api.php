@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('user-comment', 'Api\Modules\UserComment\UserCommentController@createUserComment');
+
+Route::get('user-comment/{id}', 'Api\Modules\UserComment\UserCommentController@getUserComment');
+
+Route::patch('user-comment/{id}', 'Api\Modules\UserComment\UserCommentController@updateUserComment');
+
+Route::delete('user-comment/{id}', 'Api\Modules\UserComment\UserCommentController@deleteUserComment');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
