@@ -35,6 +35,7 @@ class UserCommentController extends BaseController
     /**
      * @param UserCommentRequest $request
      * @return JsonResponse
+     * @throws ValidationException
      */
     public function createUserComment(UserCommentRequest $request)
     {

@@ -53,7 +53,7 @@ abstract class BaseRequest extends FormRequest
         $errors = $this->businessValidations();
 
         if ($errors != null) {
-            throw new ValidationException($errors);
+            throw new \Exception($errors);
         }
     }
 

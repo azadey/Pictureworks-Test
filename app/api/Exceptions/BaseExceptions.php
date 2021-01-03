@@ -2,7 +2,6 @@
 
 namespace Api\Exceptions;
 
-use Api\Core\Helpers\AppHelpers;
 use Log;
 
 
@@ -64,13 +63,8 @@ class BaseException extends \Exception
         $message  = $this->getMessage();
         $httpCode = $this->httpCode;
 
-        $user    = '[anon]';
-        $userObj = AppHelpers::loggedInUser();
-        if ($userObj != null) {
-            $user = '[' . $userObj->debugName() . ']';
-        }
 
-        return "[Exception] [tag=${tag}] ${user} ${httpCode} ${type} msg=[${message}] data=[${data}] debug=[${debug}]";
+        return "[Exception] [tag=${tag}] ${httpCode} ${type} msg=[${message}] data=[${data}] debug=[${debug}]";
     }
 
     /**

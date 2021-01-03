@@ -3,7 +3,7 @@
 namespace Api\Exceptions;
 
 use Log;
-
+use Api\Exceptions\BaseException;
 
 /**
  * Thrown in case of a client exception. All error cases which result in a 4XX series
