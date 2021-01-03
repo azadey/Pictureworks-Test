@@ -12,12 +12,17 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     jpegoptim optipng pngquant gifsicle \
     vim \
+    nano \
     unzip \
     git \
     curl \
     libonig-dev \
     libpq-dev \
     g++
+
+# Install nodejs from source
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
 
 # Install extensions
 RUN docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl

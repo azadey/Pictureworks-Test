@@ -52,11 +52,23 @@ Now lets set up the project. Run the following commands
 
     php artisan db:seed
 
+    npm install
+    
+    npm run dev
+
+    exit
+
+Now go from chrome browser to  
+
+    http://local-picwork
+
+You should see the working application.
+
 Rest API routes for user comments CRUD
 
 CREATE
 
-    POST http://{APP NAME}/api/user-comment
+    POST http://local-picwork/api/user-comment
 
     {
 	    "name" : "Samuel",
@@ -65,11 +77,11 @@ CREATE
 
 GET
     
-    GET http://{APP NAME}/api/user-comment/1
+    GET http://local-picwork/api/user-comment/1
     
 UPDATE
 
-    PATCH http://{APP NAME}/api/user-comments/1
+    PATCH http://local-picwork/api/user-comments/1
 
     {
 	    "name" : "Samuel Brent",
@@ -78,6 +90,6 @@ UPDATE
 
 DELETE
     
-    DELETE http://{APP NAME}/api/user-comments/1
+    DELETE http://local-picwork/api/user-comments/1
     
 
