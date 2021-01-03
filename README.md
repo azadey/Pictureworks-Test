@@ -56,13 +56,20 @@ Now lets set up the project. Run the following commands
     
     npm run dev
 
-    exit
+To run the test in terminal
+
+    php artisan test
 
 Now go from chrome browser to  
 
     http://local-picwork
 
 You should see the working application.
+
+Laravel artisan commands for comment create.
+You will be asked for a name and comment.
+
+    php artisan user-comment:create
 
 Rest API routes for user comments CRUD
 

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Api\Modules\UserComment\Commands\UserCommentCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        UserCommentCommand::class
     ];
 
     /**
