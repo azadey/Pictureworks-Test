@@ -60,3 +60,7 @@ Route::delete('/user-comment/{id}', function ($id) {
 
     return redirect('/');
 });
+
+Route::get('/todo', function () {
+    return view('todolist');
+});
